@@ -28,6 +28,8 @@ defmodule QueueExample.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:benchfella, "~> 0.3.4", only: :dev}
+    ]
   end
 end
