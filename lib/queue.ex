@@ -8,6 +8,10 @@ defmodule Queue do
     GenServer.start_link(__MODULE__, queue, name: name)
   end
 
+  def set(queue, items) do
+    GenServer.call(queue, {:set, items})
+  end
+
   def add(queue, item) do
     GenServer.cast(queue, {:add, item})
   end
@@ -26,6 +30,9 @@ defmodule Queue do
   end
   def handle_call({:add, item}, _from, queue) do
     {:reply, :ok, queue ++ [item]}
+  end
+  def handle_call({:set, items}, _from, _queue) do
+    {:reply, :ok, items}
   end
 
   def handle_cast({:add, item}, queue) do

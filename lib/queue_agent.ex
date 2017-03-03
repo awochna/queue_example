@@ -7,6 +7,10 @@ defmodule QueueAgent do
     Agent.start_link(fn -> queue end, name: name)
   end
 
+  def set(queue, items) do
+    Agent.update(queue, fn(_) -> items end)
+  end
+
   def add(queue, item) do
     Agent.cast(queue, fn(state) -> state ++ [item] end)
   end

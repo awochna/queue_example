@@ -10,13 +10,17 @@ defmodule QueueBench do
     :ok
   end
 
-  bench "add sync", [pid: bench_context] do
-    Queue.add(pid, "check elixir forum", :sync)
+  bench "set", [pid: bench_context] do
+    Queue.set(pid, ["check elixir forum"])
+  end
+
+  bench "add", [pid: bench_context] do
+    Queue.set(pid, ["check elixir forum"])
+    Queue.add(pid, "check elixir forum")
   end
 
   bench "get", [pid: bench_context] do
-    Queue.add(pid, "check elixir forum", :sync)
+    Queue.set(pid, ["check elixir forum"])
     Queue.get(pid)
-    :ok
   end
 end
