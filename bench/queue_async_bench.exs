@@ -1,4 +1,4 @@
-defmodule QueueBench do
+defmodule QueueAsyncBench do
   use Benchfella
 
   before_each_bench _ do
@@ -10,12 +10,12 @@ defmodule QueueBench do
     :ok
   end
 
-  bench "add sync", [pid: bench_context] do
-    Queue.add(pid, "check elixir forum", :sync)
+  bench "add async", [pid: bench_context] do
+    Queue.add(pid, "check elixir forum")
   end
 
   bench "get", [pid: bench_context] do
-    Queue.add(pid, "check elixir forum", :sync)
+    Queue.add(pid, "check elixir forum")
     Queue.get(pid)
     :ok
   end

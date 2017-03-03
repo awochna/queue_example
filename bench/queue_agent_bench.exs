@@ -10,8 +10,8 @@ defmodule QueueAgentBench do
     :ok
   end
 
-  bench "add", [pid: bench_context] do
-    QueueAgent.add(pid, "check elixir forum")
+  bench "add sync", [pid: bench_context] do
+    QueueAgent.add(pid, "check elixir forum", :sync)
   end
 
   bench "get", [pid: bench_context] do
