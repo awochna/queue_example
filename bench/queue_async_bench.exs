@@ -10,11 +10,11 @@ defmodule QueueAsyncBench do
     :ok
   end
 
-  bench "add async", [pid: bench_context] do
+  bench "add", [pid: bench_context] do
     Queue.add(pid, "check elixir forum")
   end
 
-  bench "get", [pid: bench_context] do
+  bench "get sync", [pid: bench_context] do
     Queue.add(pid, "check elixir forum")
     Queue.get(pid)
     :ok
